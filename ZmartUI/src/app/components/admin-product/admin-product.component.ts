@@ -24,7 +24,8 @@ export class AdminProductComponent implements OnInit {
       ProductPrice:['',[Validators.required]],
       ProductQuantity:['',[Validators.required]],
       ProductDescription:['',[Validators.required]],
-      ProductCategory:['',[Validators.required]]
+      ProductCategory:['',[Validators.required]],
+      ImageUrl:['',[Validators.required]]
     });
     this.loadAllProducts();
   }
@@ -70,6 +71,7 @@ loadProductToEdit(productId:string){
     this.productForm.controls['ProductQuantity'].setValue(product.productQuantity);
     this.productForm.controls['ProductDescription'].setValue(product.productDescription);
     this.productForm.controls['ProductCategory'].setValue(product.productCategory);
+    this.productForm.controls['ImageUrl'].setValue(product.imageUrl);
   });
 }
 deleteProduct(productId:string){

@@ -75,6 +75,18 @@
                                                                                         *ngIf="!productForm.get('ProductCategory').valid && productForm.get('ProductCategory').touched"></span>
                                                                         </mat-error>
                                                                 </td>
+
+                                                                <td>
+                                                                        <mat-form-field class="demo-full-width">
+                                                                                <input formControlName="ImageUrl"
+                                                                                        matInput
+                                                                                        placeholder="ImageUrl">
+                                                                        </mat-form-field>
+                                                                        <mat-error>
+                                                                                <span
+                                                                                        *ngIf="!productForm.get('ImageUrl').valid && productForm.get('ImageUrl').touched"></span>
+                                                                        </mat-error>
+                                                                </td>
                                                         </tr>
                                                         <tr>
                                                                 <td colspan="2" class="content-center">

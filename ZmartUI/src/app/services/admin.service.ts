@@ -24,7 +24,7 @@ export class AdminService {
     let options={
       headers:httpHeaders
     };
-    return this.http.post<Product>("http://localhost:7000/product",product,options);
+    return this.http.post<Product>("http://localhost:7000/product/add",product,options);
   }
 
   updateProduct(product: Product): Observable<number> {
@@ -33,7 +33,7 @@ export class AdminService {
     let options = {
       headers: httpHeaders
     };
-    return this.http.put<number>("http://localhost:7000/product", product, options);
+    return this.http.put<number>("http://localhost:7000/product/update/"+product.id, product, options);
   }
 
   deleteProductById(id:string):Observable<number>{

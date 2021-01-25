@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,7 +20,7 @@ import com.cg.zmart.service.ProductService;
 
 @RestController
 @RequestMapping("/product")
-@CrossOrigin()
+@CrossOrigin(origins = "http://localhost:4200")
 public class ProductController {
 
 	@Autowired
@@ -30,11 +31,16 @@ public class ProductController {
 		List<Product> list=service.getAllProducts();
 		return new ResponseEntity<List<Product>>(list,new HttpHeaders(),HttpStatus.OK);
 	}
-
-	@PostMapping
-	public ResponseEntity<Product> createOrupdateProduct(@RequestBody Product product) {
-		Product updated=service.createOrupdateProduct(product);
-		return new ResponseEntity<Product>(updated,new HttpHeaders(),HttpStatus.OK);
+	
+	@PostMapping("/add")	
+	public Product addProduct(@RequestBody Product product) {	
+		Product newProduct=service.createProduct(product);
+		return newProduct;
+	}
+	@PutMapping("/update/{id}")
+	public Product UpdateProduct(@PathVariable Long id,@RequestBody Product product) {
+		Product updated=service.updateProduct(id,product);
+		return updated;
 	}
 
 	@GetMapping("/{id}")

@@ -16,22 +16,11 @@ public class ProductServiceImpl implements ProductService {
 	ProductRepository prodRepo;
 
 	@Override
-	public Product createOrupdateProduct(Product product) throws NotFoundException {
-		Optional<Product> pObj=prodRepo.findById(product.getId());
-		if(pObj.isPresent()) {
-			Product newProduct=pObj.get();
-			newProduct.setImageUrl(product.getImageUrl());
-			newProduct.setProductCategory(product.getProductCategory());
-			newProduct.setProductDescription(product.getProductDescription());
-			newProduct.setProductName(product.getProductName());
-			newProduct.setProductQuantity(product.getProductQuantity());
-			newProduct.setUnitPrice(product.getUnitPrice());
-			
-			newProduct=prodRepo.save(product);
-			return newProduct;
+	public Product updateProduct(Long id,Product product) {
+		if(prodRepo.existsById(id)) {
+			return prodRepo.save(product);
 		}else {
-			product=prodRepo.save(product);
-			return product;
+			return prodRepo.save(product);
 		}
 	}
 
@@ -61,6 +50,11 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<Product> filterByCategory(String category) {
 		return prodRepo.findByProductCategory(category);
+	}
+
+	@Override
+	public Product createProduct(Product product) {
+		return prodRepo.save(product);
 	}
 
 }

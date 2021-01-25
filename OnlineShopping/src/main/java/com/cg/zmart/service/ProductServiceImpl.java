@@ -14,18 +14,14 @@ public class ProductServiceImpl implements ProductService {
 	ProductRepository prodRepo;
 	
 	@Override
-	public String createProduct(Product product) {
-		prodRepo.save(product);
-		return "Product added successfully";
+	public Product createProduct(Product product) {
+		return prodRepo.save(product);
 	}
 
 	@Override
-	public String updateProduct(long id, long quantity, double price) {
-		if(prodRepo.existsById(id)) {
-			Product product=prodRepo.getOne(id);
-			product.setProductQuantity(quantity);
-			product.setUnitPrice(price);
-			prodRepo.saveAndFlush(product);
+	public String updateProduct(Product product) {
+		if(prodRepo.existsById(product.getId())) {
+			prodRepo.save(product);
 			return "Successfully Updated";
 		}
 		return "Updation cannot occur! Enter valid ProductId";
@@ -39,12 +35,12 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public Product fetchProductById(long id) {
+	public Product fetchProductById(Long id) {
 		return prodRepo.getOne(id);
 	}
 
 	@Override
-	public String destroyProduct(long id) {
+	public String destroyProduct(Long id) {
 		prodRepo.deleteById(id);
 		return "Product removed successfully";
 	}

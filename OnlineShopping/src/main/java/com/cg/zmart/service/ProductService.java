@@ -5,15 +5,15 @@ import com.cg.zmart.entity.Product;
 
 public interface ProductService {
 
-	public String createProduct(Product product);
+	public Product createProduct(Product product);
 	
-	public String updateProduct(long id, long quantity, double price);
+	public String updateProduct(Product product);
 	
 	public List<Product> getAllProducts();
 	
-	public Product fetchProductById(long id);
+	public Product fetchProductById(Long id);
 	
-	public String destroyProduct(long id);
+	public String destroyProduct(Long id);
 	
 	public List<Product> filterByCategory(String category);
 }

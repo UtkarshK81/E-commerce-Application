@@ -29,13 +29,13 @@ public class ProductController {
 	}
 	
 	@PostMapping("/add")
-	public String addProduct(@RequestBody Product product) {
+	public Product addProduct(@RequestBody Product product) {
 		return service.createProduct(product);
 	}
 	
-	@PutMapping("/update/{id}/{quantity}/{price}")
-	public String updateProduct(@PathVariable long id,@PathVariable long quantity, @PathVariable double price) {
-		return service.updateProduct(id, quantity, price);
+	@PutMapping("/update/{id}")
+	public String updateProduct(@PathVariable Long id,@RequestBody Product product) {
+		return service.updateProduct(product);
 	}
 	
 	/*

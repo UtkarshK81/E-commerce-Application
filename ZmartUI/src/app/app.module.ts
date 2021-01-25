@@ -19,6 +19,10 @@ import { ProductService } from './services/product.service';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { FormsModule } from "@angular/forms";
+import { AdminProductComponent } from './components/admin-product/admin-product.component';
+import {MatCardModule} from '@angular/material/card'
+import { AdminService } from './services/admin.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +32,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
     FooterComponent,
     ProductListComponent,
     ProductItemComponent,
-    FiltersComponent
+    FiltersComponent,
+    AdminProductComponent
   ],
   imports: [
     BrowserModule,
@@ -40,9 +45,11 @@ import {MatGridListModule} from '@angular/material/grid-list';
     ReactiveFormsModule,
     MatGridListModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    FormsModule,
+    MatCardModule
   ],
-  providers: [ProductService],
+  providers: [ProductService,AdminService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

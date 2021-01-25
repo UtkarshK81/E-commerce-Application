@@ -1,0 +1,124 @@
+<mat-card>
+        <mat-toolbar color="accent">
+                <span>Product Details</span>
+                <p *ngIf="dataSaved" ngClass="success" valign="right">
+                        {{message}}
+                </p>
+        </mat-toolbar>
+
+        <mat-card-content>
+                <form [formGroup]="productForm" (ngSubmit)="onFormSubmit()">
+                        <table>
+                                <tr>
+                                        <td>
+                                                <table>
+                                                        <tr>
+                                                                <td>
+                                                                        <mat-form-field class="demo-full-width">
+                                                                                <input formControlName="ProductName"
+                                                                                        matInput
+                                                                                        placeholder="Product Name">
+                                                                        </mat-form-field>
+                                                                        <mat-error>
+                                                                                <span
+                                                                                        *ngIf="!productForm.get('ProductName').valid && productForm.get('ProductName').touched"></span>
+                                                                        </mat-error>
+                                                                </td>
+
+                                                                <td>
+                                                                        <mat-form-field class="demo-full-width">
+                                                                                <input formControlName="ProductPrice"
+                                                                                        matInput
+                                                                                        placeholder="Product Price">
+                                                                        </mat-form-field>
+                                                                        <mat-error>
+                                                                                <span
+                                                                                        *ngIf="!productForm.get('ProductPrice').valid && productForm.get('ProductPrice').touched"></span>
+                                                                        </mat-error>
+                                                                </td>
+                                                        </tr>
+                                                        <tr>
+                                                                <td>
+                                                                        <mat-form-field class="demo-full-width">
+                                                                                <input formControlName="ProductQuantity"
+                                                                                        matInput
+                                                                                        placeholder="Product ProductQuantity">
+                                                                        </mat-form-field>
+                                                                        <mat-error>
+                                                                                <span
+                                                                                        *ngIf="!productForm.get('ProductQuantity').valid && productForm.get('ProductQuantity').touched"></span>
+                                                                        </mat-error>
+                                                                </td>
+
+                                                                <td>
+                                                                        <mat-form-field class="demo-full-width">
+                                                                                <input formControlName="ProductDescription"
+                                                                                        matInput
+                                                                                        placeholder="Product Description">
+                                                                        </mat-form-field>
+                                                                        <mat-error>
+                                                                                <span
+                                                                                        *ngIf="!productForm.get('ProductDescription').valid && productForm.get('ProductDescription').touched"></span>
+                                                                        </mat-error>
+                                                                </td>
+                                                        </tr>
+                                                        <tr>
+
+                                                                <td>
+                                                                        <mat-form-field class="demo-full-width">
+                                                                                <input formControlName="ProductCategory"
+                                                                                        matInput
+                                                                                        placeholder="Product Category">
+                                                                        </mat-form-field>
+                                                                        <mat-error>
+                                                                                <span
+                                                                                        *ngIf="!productForm.get('ProductCategory').valid && productForm.get('ProductCategory').touched"></span>
+                                                                        </mat-error>
+                                                                </td>
+                                                        </tr>
+                                                        <tr>
+                                                                <td colspan="2" class="content-center">
+                                                                        <button type="submit" mat-raised-button
+                                                                                color="accent"
+                                                                                [disabled]="!productForm.valid">Submit</button>
+                                                                        <button type="reset" mat-raised-button
+                                                                                color="accent"
+                                                                                (click)="resetForm()">Reset</button>
+                                                                </td>
+                                                        </tr>
+                                                </table>
+                                        </td>
+
+                                        <td valign="top">
+                                                <table id="products">
+                                                        <tr>
+                                                                <th>Name</th>
+                                                                <th>Price</th>
+                                                                <th>Quantity</th>
+                                                                <th>Description</th>
+                                                                <th>Category</th>
+                                                                <th>Edit</th>
+                                                                <th>Delete</th>
+                                                        </tr>
+                                                        <tr *ngFor="let product of allProducts |async">
+                                                                <td>{{product.productName}}</td>
+                                                                <td>{{product.unitPrice}}</td>
+                                                                <td>{{product.productQuantity}}</td>
+                                                                <td>{{product.productDescription}}</td>
+                                                                <td>{{product.productCategory}}</td>
+                                                                <td>
+                                                                        <button type="button"
+                                                                                (click)="loadProductToEdit(product.id)">Edit</button>
+                                                                </td>
+                                                                <td>
+                                                                        <button type="button"
+                                                                                (click)="deleteProduct(product.id)">Delete</button>
+                                                                </td>
+                                                        </tr>
+                                                </table>
+                                        </td>
+                                </tr>
+                        </table>
+                </form>
+        </mat-card-content>
+</mat-card>

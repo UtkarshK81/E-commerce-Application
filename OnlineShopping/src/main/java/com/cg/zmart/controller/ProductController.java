@@ -1,11 +1,9 @@
 package com.cg.zmart.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,9 +25,10 @@ public class ProductController {
 	ProductService service;
 
 	@GetMapping("/showAll")
-	public ResponseEntity<List<Product>> listAllproducts() {
-		List<Product> list=service.getAllProducts();
-		return new ResponseEntity<List<Product>>(list,new HttpHeaders(),HttpStatus.OK);
+	public List<Product> listAllproducts() {
+		List<Product> products=new ArrayList<>();
+		products=service.getAllProducts();
+		return products;
 	}
 	
 	@PostMapping("/add")	
@@ -37,27 +36,26 @@ public class ProductController {
 		Product newProduct=service.createProduct(product);
 		return newProduct;
 	}
+	
+	@GetMapping("/{id}")
+	public Product getProductById(@PathVariable Long id) {
+		return service.fetchProductById(id).get();
+	}
+	
+	@DeleteMapping("delete/{id}")
+	public String delete(@PathVariable Long id) {
+		return service.destroyProduct(id);
+		
+	}
+	
 	@PutMapping("/update/{id}")
 	public Product UpdateProduct(@PathVariable Long id,@RequestBody Product product) {
 		Product updated=service.updateProduct(id,product);
 		return updated;
 	}
 
-	@GetMapping("/{id}")
-	public ResponseEntity<Product> getProductById(@PathVariable Long id) {
-		Product product=service.fetchProductById(id);
-		return new ResponseEntity<Product>(product,new HttpHeaders(),HttpStatus.OK);
-}
-
 	@GetMapping("/under/{category}")
 	public List<Product> fetchByCategory(@PathVariable String category) {
 		return service.filterByCategory(category);
-	}
-
-	@DeleteMapping("delete/{id}")
-	public HttpStatus delete(@PathVariable long id) {
-		service.destroyProduct(id);
-		return HttpStatus.OK;
-		
 	}
 }

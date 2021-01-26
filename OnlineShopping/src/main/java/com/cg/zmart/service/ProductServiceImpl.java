@@ -17,11 +17,7 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public Product updateProduct(Long id,Product product) {
-		if(prodRepo.existsById(id)) {
-			return prodRepo.save(product);
-		}else {
-			return prodRepo.save(product);
-		}
+		return prodRepo.saveAndFlush(product);
 	}
 
 	// FETCHING ALL PRODUCTS IN THE DB

@@ -1,6 +1,6 @@
 package com.cg.zmart.exception;
 
-public class NotFoundException extends RuntimeException {
+public class ProductNotFoundException extends RuntimeException {
 
 	/**
 	 * 
@@ -13,7 +13,7 @@ public class NotFoundException extends RuntimeException {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	public NotFoundException(String message) {
+	public ProductNotFoundException(String message) {
 		this.message = message;
 	}
 	

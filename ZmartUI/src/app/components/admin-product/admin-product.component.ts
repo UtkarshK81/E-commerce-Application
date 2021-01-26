@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { Product } from 'src/app/models/product';
+import { Product } from 'src/app/models/product.model';
 import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class AdminProductComponent implements OnInit {
 
   dataSaved=false;
   productForm:any;
-  allProducts:Observable<Product[]>;
+  allProducts?:Observable<Product[]>;
   productIdToUpdate:string='';
   message:string='';
   constructor(private ser:AdminService, private formbuilder:FormBuilder) { }

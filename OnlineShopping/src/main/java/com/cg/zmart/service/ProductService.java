@@ -1,9 +1,9 @@
 package com.cg.zmart.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import com.cg.zmart.entity.Product;
+import com.cg.zmart.exception.ResourceNotFoundException;
 
 public interface ProductService {
 
@@ -11,11 +11,11 @@ public interface ProductService {
 	
 	public Product createProduct(Product product);
 	
-	public Optional<Product> fetchProductById(Long id);
+	public Product fetchProductById(Long id) throws ResourceNotFoundException;
 	
-	public String destroyProduct(Long id);
+	public List<Product> destroyProduct(Long id);
 	
-	public Product updateProduct(Long id, Product product);
+	public Product updateProduct(Long id, Product productDetails);
 
 	public List<Product> filterByCategory(String category);
 }

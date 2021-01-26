@@ -1,9 +1,11 @@
 package com.cg.zmart.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,32 +28,28 @@ public class ProductController {
 
 	@GetMapping("/showAll")
 	public List<Product> listAllproducts() {
-		List<Product> products=new ArrayList<>();
-		products=service.getAllProducts();
-		return products;
+		return service.getAllProducts();
 	}
 	
 	@PostMapping("/add")	
-	public Product addProduct(@RequestBody Product product) {	
-		Product newProduct=service.createProduct(product);
-		return newProduct;
+	public Product addProduct(@Valid @RequestBody Product product) {	
+		return service.createProduct(product);
 	}
 	
 	@GetMapping("/{id}")
-	public Product getProductById(@PathVariable Long id) {
-		return service.fetchProductById(id).get();
+	public ResponseEntity<Product> getProductById(@PathVariable Long id){
+		return ResponseEntity.ok().body(service.fetchProductById(id));
 	}
 	
 	@DeleteMapping("delete/{id}")
-	public String delete(@PathVariable Long id) {
+	public List<Product> delete(@PathVariable Long id) {
 		return service.destroyProduct(id);
 		
 	}
 	
 	@PutMapping("/update/{id}")
-	public Product UpdateProduct(@PathVariable Long id,@RequestBody Product product) {
-		Product updated=service.updateProduct(id,product);
-		return updated;
+	public ResponseEntity<Product> UpdateProduct(@PathVariable Long id,@Valid @RequestBody Product product) {
+		return ResponseEntity.ok(service.updateProduct(id, product));
 	}
 
 	@GetMapping("/under/{category}")

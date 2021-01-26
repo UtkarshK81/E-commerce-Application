@@ -14,31 +14,19 @@ export class AdminService {
     return this.http.get<Product[]>("http://localhost:7000/product/showAll");
   }
 
-  fetchProductById(id:string):Observable<Product>{
+  fetchProductById(id:number):Observable<Product>{
     return this.http.get<Product>("http://localhost:7000/product/"+id);
   }
 
   createProduct(product:Product):Observable<Product>{
-    let httpHeaders=new HttpHeaders()
-    .set('Content-Type','application/json');
-    let options={
-      headers:httpHeaders
-    };
-    return this.http.post<Product>("http://localhost:7000/product/add",product,options);
+    return this.http.post<Product>("http://localhost:7000/product/add",product);
   }
 
-  updateProduct(product: Product): Observable<number> {
-    let httpHeaders = new HttpHeaders()
-      .set('Content-Type', 'application/json');
-    let options = {
-      headers: httpHeaders
-    };
-    return this.http.put<number>("http://localhost:7000/product/update/"+product.id, product, options);
+  updateProduct(id:number,value:any): Observable<Object> {
+    return this.http.put("http://localhost:7000/product/update/"+id, value);
   }
 
-  deleteProductById(id:string):Observable<number>{
-    let httpHeaders = new HttpHeaders()
-      .set('Content-Type', 'application/json');
-    return this.http.delete<number>("http://localhost:7000/product/delete/"+id);
+  deleteProductById(id:number):Observable<any>{
+    return this.http.delete<number>("http://localhost:7000/product/delete/"+id,);
   }
 }

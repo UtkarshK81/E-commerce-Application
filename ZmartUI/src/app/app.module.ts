@@ -20,9 +20,12 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { FormsModule } from "@angular/forms";
-import { AdminProductComponent } from './components/admin-product/admin-product.component';
 import {MatCardModule} from '@angular/material/card'
 import { AdminService } from './services/admin.service';
+import { CreateProductComponent } from './components/create-product/create-product.component';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { ListofProductsComponent } from './components/listof-products/listof-products.component';
+import { UpdateProductComponent } from './components/update-product/update-product.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +36,10 @@ import { AdminService } from './services/admin.service';
     ProductListComponent,
     ProductItemComponent,
     FiltersComponent,
-    AdminProductComponent
+    CreateProductComponent,
+    ProductDetailsComponent,
+    ListofProductsComponent,
+    UpdateProductComponent
   ],
   imports: [
     BrowserModule,

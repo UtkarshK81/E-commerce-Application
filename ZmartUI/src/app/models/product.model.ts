@@ -1,20 +1,20 @@
 
 export class Product {
-        id: string;
+        id: number;
         productName: string;
         productDescription: string;
-        unitPrice: string;
+        unitPrice: number;
         imageUrl: string;
-        productQuantity: string;
+        productQuantity: number;
         productCategory:string;
 
         constructor() {
-                this.id = '';
+                this.id = 0;
                 this.productName = '';
                 this.productDescription = '';
-                this.unitPrice = '';
+                this.unitPrice = 0;
                 this.imageUrl = '';
-                this.productQuantity='';
+                this.productQuantity=0;
                 this.productCategory='';
         }
 }

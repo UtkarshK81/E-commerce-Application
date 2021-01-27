@@ -12,9 +12,9 @@ export class Product {
                 this.id = 0;
                 this.productName = '';
                 this.productDescription = '';
-                this.unitPrice = 0;
+                this.unitPrice = 1;
                 this.imageUrl = '';
-                this.productQuantity=0;
+                this.productQuantity=1;
                 this.productCategory='';
         }
 }

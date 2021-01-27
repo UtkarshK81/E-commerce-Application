@@ -32,10 +32,6 @@ export class ListofProductsComponent implements OnInit {
         error => console.log(error));
   }
 
-  productDetails(id:number){
-    this.router.navigate(['details',id]);
-  }
-
   updateProduct(id:number){
     this.router.navigate(['update',id])
   }

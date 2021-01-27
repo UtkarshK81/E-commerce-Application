@@ -21,10 +21,8 @@
                     <td>{{product.productCategory}}</td>
                     <td>{{product.unitPrice|currency:'INR'}}</td>
                     <td>{{product.productQuantity}}</td>
-                    <td><button (click)="deleteProduct(product.id)" class="btn btn-danger">Delete</button>
-                        <button (click)="productDetails(product.id)" class="btn btn-info"
-                            style="margin-left: 10px">Details</button>
-                        <button (click)="updateProduct(product.id)" class="btn btn-dark" style="margin-left: 10px">Edit</button>
+                    <td><button (click)="deleteProduct(product.id)" class="btn btn-danger" style="width: 89px">Delete</button>
+                        <button (click)="updateProduct(product.id)" class="btn btn-info" style="width: 89px">Edit</button>
                     </td>
                 </tr>
             </tbody>

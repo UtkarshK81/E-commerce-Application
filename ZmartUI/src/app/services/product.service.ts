@@ -12,4 +12,8 @@ export class ProductService {
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>("http://localhost:7000/product/showAll");
   }
+
+  getProductByCategory(categoryName:string):Observable<Product[]>{
+    return this.http.get<Product[]>("http://localhost:7000/product/under"+categoryName);
+  }
 }

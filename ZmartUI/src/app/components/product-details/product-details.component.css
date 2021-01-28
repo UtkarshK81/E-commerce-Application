@@ -1,0 +1,6 @@
+.child{
+    border: 5px;
+}
+.parent{
+    display: flex;
+}

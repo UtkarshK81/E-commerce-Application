@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Category } from 'src/app/category';
 import { Product } from 'src/app/models/product.model';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -9,16 +10,38 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ProductListComponent implements OnInit {
 
-  productList: Product[] = []
-  constructor(private productService:ProductService) { }
+  productList: Product[] = [];
+  filterList: Product[] = [];
+  category: Category[] = [];
+  catSelected: any = {};
+  modifiedCat: string = '';
+  constructor(private productService: ProductService) { }
 
   ngOnInit() {
-    this.loadProducts();
+    this.category = [
+      { Id: 1, Name: "All" },
+      { Id: 2, Name: "Electronics" },
+      { Id: 3, Name: "Home Furnishing" },
+      { Id: 4, Name: "Men's Fashion" }
+    ];
+    this.catSelected = 1;
+
+    this.loadAllProducts();
   }
 
-  loadProducts() {
+  loadAllProducts() {
     this.productService.getProducts().subscribe((products) => {
       this.productList = products;
     })
+  }
+
+  loadByCategory(categoryName: string) {
+    this.productService.getProductByCategory(categoryName).subscribe((products) => {
+      this.filterList = products;
+    })
+  }
+
+  onCategorySelected(val: Category) {
+    this.modifiedCat = val.Name;
   }
 }

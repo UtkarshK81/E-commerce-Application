@@ -11,8 +11,7 @@ const routes: Routes = [
   { path: 'products', component: ListofProductsComponent },
   { path: 'add', component: CreateProductComponent },
   { path: 'update/:id', component: UpdateProductComponent },
-  { path: 'details/:id', component: ProductDetailsComponent },
-  { path: '', redirectTo: 'customerView', pathMatch: 'full' }
+  { path: 'details/:id', component: ProductDetailsComponent }
 ];
 
 @NgModule({

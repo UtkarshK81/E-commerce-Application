@@ -1,24 +1,42 @@
-<h2>Product Details</h2>
+<header class="text-left">
+<h1>Product Details</h1>
+</header>
 
 <hr />
-<div *ngIf="product">
-    <div>
-        <label><b>Product Name: </b></label> {{product.productName}}
-    </div>
-    <div>
-        <label><b>Description: </b></label> {{product.productDescription}}
-    </div>
-    <div>
-        <label><b>Price: </b></label> {{product.unitPrice|currency:'INR'}}
-    </div>
-    <div>
-        <label><b>Category: </b></label> {{product.productCategory}}
-    </div>
-</div>
+<div class="card rounded shadow border-primary mb-3" style="width: 35rem;">
+    <div class="card-body p-5 bg-white rounded text-success">
 
-<br>
-<br>
-<div class="row">
-    <button (click)="home()" class="btn btn-primary">Back to Home Page</button><br>
-    <button class="btn btn-success" style="width: 110px">Add to cart</button>
+        <body>
+            <section class="parent">
+                <section class="child">
+                    <div *ngIf="product">
+                        <div>
+                            <label><b>Name: </b></label> {{product.productName}}
+                        </div>
+                        <div>
+                            <label><b>Description: </b></label> {{product.productDescription}}
+                        </div>
+                        <div>
+                            <label><b>Price: </b></label> {{product.unitPrice|currency:'INR'}}
+                        </div>
+                        <div>
+                            <label><b>Category: </b></label> {{product.productCategory}}
+                        </div>
+                    </div>
+                </section>
+
+                <section class="child">
+                    <div>
+                        <img src={{product.imageUrl}}>
+                    </div>
+                </section>
+            </section>
+
+            <br>
+            <div class="row">
+                <button (click)="home()" class="btn btn-primary">Back to Home Page</button><br>
+                <button class="btn btn-success">Add to cart</button>
+            </div>
+        </body>
+    </div>
 </div>

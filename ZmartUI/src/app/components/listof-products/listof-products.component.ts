@@ -11,7 +11,7 @@ import { AdminService } from 'src/app/services/admin.service';
 })
 export class ListofProductsComponent implements OnInit {
 
-  products?:Observable<Product[]>;
+  products?: Observable<Product[]>;
   constructor(private aService:AdminService,private router:Router) { }
 
   ngOnInit() {

@@ -26,6 +26,8 @@ import { CreateProductComponent } from './components/create-product/create-produ
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { ListofProductsComponent } from './components/listof-products/listof-products.component';
 import { UpdateProductComponent } from './components/update-product/update-product.component';
+import { ToastrModule } from 'ngx-toastr';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +55,13 @@ import { UpdateProductComponent } from './components/update-product/update-produ
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
-    MatCardModule
+    MatCardModule,
+    ToastrModule.forRoot({
+      timeOut:500,
+      positionClass:'toast-top-left',
+      preventDuplicates:false
+    }),
+    NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [ProductService,AdminService],
   bootstrap: [AppComponent]

@@ -1,11 +1,11 @@
+<h2>Select Category</h2>
 <div style="margin:auto; width: 100%; padding: 10px;" >
 <select [(ngModel)]="catSelected" (ngModelChange)="onCategorySelected($event)">
-        <option *ngFor="let cat of category" [ngValue]="cat.Id">
+        <option *ngFor="let cat of category" [ngValue]="cat">
                 {{cat.Name}}
         </option>
 </select>
 </div>
-<br>
 
 <div class="row">
         <div class="col-md-4" *ngFor="let product of productList">

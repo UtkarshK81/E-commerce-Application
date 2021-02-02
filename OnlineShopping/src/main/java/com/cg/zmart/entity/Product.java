@@ -1,9 +1,15 @@
 package com.cg.zmart.entity;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -33,6 +39,10 @@ public class Product {
 	
 	@NotNull
 	private String productCategory;
+	
+	@OneToMany(targetEntity = Review.class,cascade = CascadeType.ALL)
+	@JoinColumn(name = "pr_fid",referencedColumnName = "id")
+	private List<Review> reviews=new ArrayList<Review>();
 	
 	@NotNull
 	private String imageUrl;
@@ -93,5 +103,13 @@ public class Product {
 
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
+	}
+
+	public List<Review> getReviews() {
+		return reviews;
+	}
+
+	public void setReviews(List<Review> reviews) {
+		this.reviews = reviews;
 	}
 }

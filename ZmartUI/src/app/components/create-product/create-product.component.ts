@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Product } from 'src/app/models/product.model';
 import { AdminService } from 'src/app/services/admin.service';
 
@@ -12,7 +13,7 @@ export class CreateProductComponent implements OnInit {
 
   product:Product=new Product();
   submitted=false;
-  constructor(private aService:AdminService,private router:Router) { }
+  constructor(private aService:AdminService,private router:Router,private notify:ToastrService) { }
 
   ngOnInit(){
   }
@@ -29,6 +30,7 @@ export class CreateProductComponent implements OnInit {
       this.gotoList();
     },
     error=>console.log(error));
+    this.notify.success("Product available for purchase","Success",{timeOut:1000});
   }
 
   onSubmit() {

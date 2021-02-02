@@ -56,11 +56,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     MatInputModule,
     FormsModule,
     MatCardModule,
-    ToastrModule.forRoot({
-      timeOut:500,
-      positionClass:'toast-top-left',
-      preventDuplicates:false
-    }),
+    ToastrModule.forRoot(),
     NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [ProductService,AdminService],

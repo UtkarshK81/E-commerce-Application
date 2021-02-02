@@ -14,16 +14,16 @@ export class ProductListComponent implements OnInit {
   filterList: Product[] = [];
   category: Category[] = [];
   catSelected: any = {};
-  modifiedCat:string="";
+  modifiedCat: string = "";
   constructor(private productService: ProductService) { }
 
   ngOnInit() {
     this.category = [
-      { Id: 1, Name: "Electronics" },
-      { Id: 2, Name: "Home Furnishing" },
-      { Id: 3, Name: "Men's Fashion" }
+      { Id: 1, Name: "All" },
+      { Id: 2, Name: "Electronics" },
+      { Id: 3, Name: "Home Furnishing" },
+      { Id: 4, Name: "Men's Fashion" }
     ];
-    this.catSelected = 1;
     this.loadAllProducts();
   }
 
@@ -41,6 +41,10 @@ export class ProductListComponent implements OnInit {
 
   onCategorySelected(val: Category) {
     this.modifiedCat = val.Name;
-    this.loadByCategory(this.modifiedCat);
+    if (this.modifiedCat == "All") {
+      this.loadAllProducts();
+    } else {
+      this.loadByCategory(this.modifiedCat);
+    }
   }
 }

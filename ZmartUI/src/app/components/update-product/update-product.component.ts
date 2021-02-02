@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Product } from 'src/app/models/product.model';
 import { AdminService } from 'src/app/services/admin.service';
 
@@ -12,7 +13,7 @@ export class UpdateProductComponent implements OnInit {
 
   id:number=0;
   product: Product = new Product;
-  constructor(private route:ActivatedRoute, private router:Router,private aService:AdminService) { }
+  constructor(private route:ActivatedRoute, private router:Router,private aService:AdminService,private notify:ToastrService) { }
 
   ngOnInit() {
     this.product=new Product();
@@ -32,6 +33,7 @@ export class UpdateProductComponent implements OnInit {
         this.product = new Product();
         this.gotoList();
       }, error => console.log(error));
+      this.notify.success("Updated Successfully","Success", {timeOut:1000});
   }
 
   onSubmit() {

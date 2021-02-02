@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { Product } from 'src/app/models/product.model';
 import { AdminService } from 'src/app/services/admin.service';
@@ -12,7 +13,7 @@ import { AdminService } from 'src/app/services/admin.service';
 export class ListofProductsComponent implements OnInit {
 
   products?: Observable<Product[]>;
-  constructor(private aService:AdminService,private router:Router) { }
+  constructor(private aService:AdminService,private router:Router, private notify:ToastrService) { }
 
   ngOnInit() {
     this.reloadData();
@@ -30,6 +31,7 @@ export class ListofProductsComponent implements OnInit {
           this.reloadData();
         },
         error => console.log(error));
+        this.notify.success("Deleted Successfully","Success",{timeOut:1000});
   }
 
   updateProduct(id:number){

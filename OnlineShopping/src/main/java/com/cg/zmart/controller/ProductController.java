@@ -2,8 +2,6 @@ package com.cg.zmart.controller;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -15,6 +13,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.cg.zmart.dto.ProductDTO;
 import com.cg.zmart.entity.Product;
 import com.cg.zmart.service.ProductService;
 
@@ -32,8 +32,9 @@ public class ProductController {
 	}
 	
 	@PostMapping("/add")	
-	public Product addProduct(@Valid @RequestBody Product product) {	
-		return service.createProduct(product);
+	public Product addProduct(@RequestBody ProductDTO product){
+		Product prodEntity=new Product();
+		return service.createProduct(prodEntity);
 	}
 	
 	@GetMapping("/{id}")
@@ -48,8 +49,9 @@ public class ProductController {
 	}
 	
 	@PutMapping("/update/{id}")
-	public ResponseEntity<Product> UpdateProduct(@PathVariable Long id,@Valid @RequestBody Product product) {
-		return ResponseEntity.ok(service.updateProduct(id, product));
+	public ResponseEntity<Product> editProduct(@PathVariable Long id,@RequestBody ProductDTO product) {
+		Product prodEntity=new Product();
+		return ResponseEntity.ok(service.updateProduct(id, prodEntity));
 	}
 
 	@GetMapping("/under/{category}")

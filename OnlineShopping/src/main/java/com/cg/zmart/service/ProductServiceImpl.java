@@ -28,9 +28,8 @@ public class ProductServiceImpl implements ProductService {
 
 	// FETCH BY ID
 	@Override
-	public Product fetchProductById(Long id) throws ResourceNotFoundException {
-		Product product=prodRepo.findById(id).orElseThrow(()->new ResourceNotFoundException("Product not found for the id:"+id));
-		return product;
+	public Product fetchProductById(Long id){
+		return prodRepo.findById(id).orElseThrow(()->new ResourceNotFoundException("Product not found for the id:"+id));
 	}
 
 	// DELETE BY ID
@@ -52,8 +51,7 @@ public class ProductServiceImpl implements ProductService {
 		product.setProductQuantity(productDetails.getProductQuantity());
 		product.setUnitPrice(productDetails.getUnitPrice());
 		
-		Product updatedProduct=prodRepo.save(product);
-		return updatedProduct;
+		return prodRepo.save(product);
 	}
 
 	@Override

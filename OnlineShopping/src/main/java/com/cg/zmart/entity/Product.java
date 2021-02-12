@@ -36,9 +36,6 @@ public class Product {
 	@NotNull
 	private String imageUrl;
 
-	public Product() {
-	}
-
 	public Long getId() {
 		return id;
 	}
@@ -95,4 +92,17 @@ public class Product {
 		this.imageUrl = imageUrl;
 	}
 
+	public Product() {
+	}
+
+	public Product(long id, String productName, double unitPrice, long productQuantity, String productDescription,
+			String productCategory, String imageUrl) {
+		this.id = id;
+		this.productName = productName;
+		this.unitPrice = unitPrice;
+		this.productQuantity = productQuantity;
+		this.productDescription = productDescription;
+		this.productCategory = productCategory;
+		this.imageUrl = imageUrl;
+	}
 }

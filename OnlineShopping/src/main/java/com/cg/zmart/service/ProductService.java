@@ -1,19 +1,19 @@
 package com.cg.zmart.service;
 
 import java.util.List;
-import com.cg.zmart.entity.Product;
+import com.cg.zmart.entity.ProductEntity;
 
 public interface ProductService {
 
-	public List<Product> getAllProducts();
+	public List<ProductEntity> getAllProducts();
 	
-	public Product createProduct(Product product);
+	public ProductEntity createProduct(ProductEntity productEntity);
 	
-	public Product fetchProductById(Long id);
+	public ProductEntity fetchProductById(Long id);
 	
-	public List<Product> destroyProduct(Long id);
+	public List<ProductEntity> destroyProduct(Long id);
 	
-	public Product updateProduct(Long id, Product productDetails);
+	public ProductEntity updateProduct(Long id, ProductEntity productDetails);
 
-	public List<Product> filterByCategory(String category);
+	public List<ProductEntity> filterByCategory(String category);
 }

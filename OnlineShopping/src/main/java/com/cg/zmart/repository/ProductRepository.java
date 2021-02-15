@@ -5,9 +5,9 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import com.cg.zmart.entity.Product;
+import com.cg.zmart.entity.ProductEntity;
 
 @Repository
-public interface ProductRepository extends JpaRepository<Product, Long> {
-	public List<Product> findByProductCategory(String categoryName);
+public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
+	public List<ProductEntity> findByProductCategory(String categoryName);
 }

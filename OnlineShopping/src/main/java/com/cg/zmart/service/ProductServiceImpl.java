@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.cg.zmart.entity.Product;
+import com.cg.zmart.entity.ProductEntity;
 import com.cg.zmart.exception.ResourceNotFoundException;
 import com.cg.zmart.repository.ProductRepository;
 
@@ -16,34 +16,34 @@ public class ProductServiceImpl implements ProductService {
 
 	// FETCHING ALL PRODUCTS FROM THE DB
 	@Override
-	public List<Product> getAllProducts() {
+	public List<ProductEntity> getAllProducts() {
 		return prodRepo.findAll();
 	}
 
 	// SAVE NEW PRODUCT TO DB
 	@Override
-	public Product createProduct(Product product) {
+	public ProductEntity createProduct(ProductEntity product) {
 		return prodRepo.save(product);
 	}
 
 	// FETCH BY ID
 	@Override
-	public Product fetchProductById(Long id){
+	public ProductEntity fetchProductById(Long id){
 		return prodRepo.findById(id).orElseThrow(()->new ResourceNotFoundException("Product not found for the id:"+id));
 	}
 
 	// DELETE BY ID
 	@Override
-	public List<Product> destroyProduct(Long id) {
-		Product product=prodRepo.findById(id).orElseThrow(()-> new ResourceNotFoundException("Product not found for this id:"+id));
+	public List<ProductEntity> destroyProduct(Long id) {
+		ProductEntity product=prodRepo.findById(id).orElseThrow(()-> new ResourceNotFoundException("Product not found for this id:"+id));
 		prodRepo.delete(product);
 		return prodRepo.findAll();
 	}
 
 	//UPDATE OPERATION
 	@Override
-	public Product updateProduct(Long id, Product productDetails) {
-		Product product=prodRepo.findById(id).orElseThrow(()->new ResourceNotFoundException("Product not found for id"+id));
+	public ProductEntity updateProduct(Long id, ProductEntity productDetails) {
+		ProductEntity product=prodRepo.findById(id).orElseThrow(()->new ResourceNotFoundException("Product not found for id"+id));
 		product.setImageUrl(productDetails.getImageUrl());
 		product.setProductCategory(productDetails.getProductCategory());
 		product.setProductDescription(productDetails.getProductDescription());
@@ -55,7 +55,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<Product> filterByCategory(String category) {
+	public List<ProductEntity> filterByCategory(String category) {
 		return prodRepo.findByProductCategory(category);
 	}
 

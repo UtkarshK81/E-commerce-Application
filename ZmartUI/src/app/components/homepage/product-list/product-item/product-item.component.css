@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap');
+*{
+    letter-spacing: 1px;
+}
+.card-img-top {
+    width: 100%;
+    height: 25vw;
+    object-fit:cover;
+}
+.btn-1{
+    width: 104px;
+    height: 40px;
+    color: white;
+    background-color: rgb(14, 91, 206);
+    border-radius: 4px;
+    box-shadow: inset 0 0 0 0 rgb(0,255,68);
+    transition: ease-out 0.3s;
+    outline: none;
+    border: 1px solid #42FBF2;
+}
+.btn-1:hover{
+    box-shadow: inset 104px 0 0 0 rgb(0,255,68);
+    cursor: pointer;
+    color: black;
+}
+.btn-2{
+    width: 110px;
+    height: 40px;
+    color: rgb(69, 13, 223);
+    transition: ease-out 0.3s;
+    outline: none;
+    border: 1px solid #42FBF2;
+    position: relative;
+}
+.btn-2:hover{
+    box-shadow: inset 110px 0 0 0 rgb(0,255,68);
+    color:black;
+    cursor: pointer;
+}

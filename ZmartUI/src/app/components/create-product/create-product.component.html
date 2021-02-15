@@ -2,12 +2,9 @@
   <h1>Add Product</h1>
 </header>
 <div class="row">
-  <div class="col-sm-6">
-    <img src={{product.imageUrl}}>
-  </div>
-  <div class="col-sm-6">
-    <div class="card rounded shadow border-primary" style="width: 35rem;">
-      <div class="card-body p-5 bg-white rounded">
+  <div class="card border-primary" style="width: 60rem;">
+    <div class="card-body">
+      <div class="column">
         <div [hidden]="submitted" style="width: 400px;">
           <form #addForm="ngForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
@@ -30,7 +27,8 @@
             <div class="form-group">
               <label for="productQuantity">Quantity</label>
               <input type="number" class="form-control" id="productQuantity" number required
-                [(ngModel)]="product.productQuantity" name="productQuantity" min="1" oninput="validity.valid||(value='');" #productQuantity="ngModel">
+                [(ngModel)]="product.productQuantity" name="productQuantity" min="1"
+                oninput="validity.valid||(value='');" #productQuantity="ngModel">
               <p class="form-text text-muted" *ngIf="productQuantity.touched && !productQuantity.valid">Minimum
                 Quantity
                 is 1</p>
@@ -63,6 +61,9 @@
             <button type="submit" class="btn btn-success" [disabled]="!addForm.valid">Submit</button>
           </form>
         </div>
+      </div>
+      <div class="column">
+        <img src={{product.imageUrl}}/>
       </div>
     </div>
   </div>

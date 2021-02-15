@@ -1,6 +1,5 @@
-.child{
-    border: 5px;
-}
-.parent{
-    display: flex;
+.card-img-top {
+    width: 50%;
+    height:45vw;
+    object-fit:cover;
 }

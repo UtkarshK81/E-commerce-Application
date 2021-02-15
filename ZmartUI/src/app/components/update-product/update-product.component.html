@@ -3,68 +3,69 @@
 </header>
 
 <div class="row">
-    <div class="col-sm-6">
-        <img src={{product.imageUrl}}>
-    </div>
-    <div class="col-sm-6">
-        <div class="card rounded shadow border-primary" style="width: 35rem;">
-            <div class="card-body p-5 bg-white rounded">
-                <div style="width: 400px;">
-                    <form #updateForm="ngForm" (ngSubmit)="onSubmit()">
-                        <div class="form-group">
-                            <label for="productName">Name</label>
-                            <input type="text" class="form-control" id="productName" required
-                                [(ngModel)]="product.productName" name="productName" #productName="ngModel">
-                            <p class="form-text text-muted" *ngIf="productName.touched && !productName.valid">You
-                                must enter
-                                a name</p>
-                        </div>
+    <div class="card border-primary" style="width: 60rem;">
+        <div class="card-body">
+            <div class="column">
+                <form #updateForm="ngForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <label for="productName">Name</label>
+                        <input type="text" class="form-control" id="productName" required
+                            [(ngModel)]="product.productName" name="productName" #productName="ngModel">
+                        <p class="form-text text-muted" *ngIf="productName.touched && !productName.valid">You
+                            must enter
+                            a name</p>
+                    </div>
 
-                        <div class="form-group">
-                            <label for="productCategory">Category</label>
-                            <input type="text" class="form-control" id="productCategory" required
-                                [(ngModel)]="product.productCategory" name="productCategory" #productCategory="ngModel">
-                            <p class="form-text text-muted" *ngIf="productCategory.touched && !productCategory.valid">
-                                Must
-                                be under some category</p>
-                        </div>
+                    <div class="form-group">
+                        <label for="productCategory">Category</label>
+                        <input type="text" class="form-control" id="productCategory" required
+                            [(ngModel)]="product.productCategory" name="productCategory" #productCategory="ngModel">
+                        <p class="form-text text-muted" *ngIf="productCategory.touched && !productCategory.valid">
+                            Must
+                            be under some category</p>
+                    </div>
 
-                        <div class="form-group">
-                            <label for="productQuantity">Quantity</label>
-                            <input type="number" class="form-control" id="productQuantity" number required
-                                [(ngModel)]="product.productQuantity" name="productQuantity" min="1" oninput="validity.valid||(value='');" #productQuantity="ngModel">
-                            <p class="form-text text-muted" *ngIf="productQuantity.touched && !productQuantity.valid">
-                                Invalid</p>
-                        </div>
+                    <div class="form-group">
+                        <label for="productQuantity">Quantity</label>
+                        <input type="number" class="form-control" id="productQuantity" number required
+                            [(ngModel)]="product.productQuantity" name="productQuantity" min="1"
+                            oninput="validity.valid||(value='');" #productQuantity="ngModel">
+                        <p class="form-text text-muted" *ngIf="productQuantity.touched && !productQuantity.valid">
+                            Invalid</p>
+                    </div>
 
-                        <div class="form-group">
-                            <label for="productDescription">Description</label>
-                            <input type="text" class="form-control" id="productDescription" required
-                                [(ngModel)]="product.productDescription" name="productDescription"
-                                #productDescription="ngModel">
-                            <p class="form-text text-muted"
-                                *ngIf="productDescription.touched && !productDescription.valid">One Liner</p>
-                        </div>
+                    <div class="form-group">
+                        <label for="productDescription">Description</label>
+                        <input type="text" class="form-control" id="productDescription" required
+                            [(ngModel)]="product.productDescription" name="productDescription"
+                            #productDescription="ngModel">
+                        <p class="form-text text-muted" *ngIf="productDescription.touched && !productDescription.valid">
+                            One
+                            Liner</p>
+                    </div>
 
-                        <div class="form-group">
-                            <label for="unitPrice">Price</label>
-                            <input type="number" class="form-control" id="unitPrice" number required
-                                [(ngModel)]="product.unitPrice" name="unitPrice" min="1" oninput="validity.valid||(value='');" #unitPrice="ngModel">
-                            <p class="form-text text-muted" *ngIf="unitPrice.touched && !unitPrice.valid">Invalid</p>
-                        </div>
+                    <div class="form-group">
+                        <label for="unitPrice">Price</label>
+                        <input type="number" class="form-control" id="unitPrice" number required
+                            [(ngModel)]="product.unitPrice" name="unitPrice" min="1"
+                            oninput="validity.valid||(value='');" #unitPrice="ngModel">
+                        <p class="form-text text-muted" *ngIf="unitPrice.touched && !unitPrice.valid">Invalid</p>
+                    </div>
 
-                        <div class="form-group">
-                            <label for="imageUrl">Image URL</label>
-                            <input type="text" class="form-control" id="imageUrl" required
-                                [(ngModel)]="product.imageUrl" name="imageUrl" #imageUrl="ngModel">
-                            <p class="form-text text-muted" *ngIf="imageUrl.touched && !imageUrl.valid">Give a
-                                snapshot
-                                Url</p>
-                        </div>
+                    <div class="form-group">
+                        <label for="imageUrl">Image URL</label>
+                        <input type="text" class="form-control" id="imageUrl" required [(ngModel)]="product.imageUrl"
+                            name="imageUrl" #imageUrl="ngModel">
+                        <p class="form-text text-muted" *ngIf="imageUrl.touched && !imageUrl.valid">Give a
+                            snapshot
+                            Url</p>
+                    </div>
 
-                        <button type="submit" class="btn btn-success" [disabled]="!updateForm.valid">Submit</button>
-                    </form>
-                </div>
+                    <button type="submit" class="btn btn-success" [disabled]="!updateForm.valid">Submit</button>
+                </form>
+            </div>
+            <div class="column">
+                <img src={{product.imageUrl}} />
             </div>
         </div>
     </div>

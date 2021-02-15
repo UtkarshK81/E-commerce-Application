@@ -1,42 +1,21 @@
 <header class="text-left">
-<h1>Product Details</h1>
+    <h1>Product Details</h1>
 </header>
 
 <hr />
-<div class="card rounded shadow border-primary mb-3" style="width: 35rem;">
-    <div class="card-body p-5 bg-white rounded text-success">
-
-        <body>
-            <section class="parent">
-                <section class="child">
-                    <div *ngIf="product">
-                        <div>
-                            <label><b>Name: </b></label> {{product.productName}}
-                        </div>
-                        <div>
-                            <label><b>Description: </b></label> {{product.productDescription}}
-                        </div>
-                        <div>
-                            <label><b>Price: </b></label> {{product.unitPrice|currency:'INR'}}
-                        </div>
-                        <div>
-                            <label><b>Category: </b></label> {{product.productCategory}}
-                        </div>
-                    </div>
-                </section>
-
-                <section class="child">
-                    <div>
-                        <img src={{product.imageUrl}}>
-                    </div>
-                </section>
-            </section>
-
-            <br>
-            <div class="row">
-                <button (click)="home()" class="btn btn-primary">Back to Home Page</button><br>
-                <button class="btn btn-success">Add to cart</button>
-            </div>
-        </body>
+<div class="card border-primary" style="width:60rem">
+    <img class="card-img-top" alt="Avatar" style="width: 100%;" [src]="product.imageUrl" />
+    <div class="card-body">
+        <div *ngIf="product">
+            <p><b>Name: </b> {{product.productName}}</p>
+            <p><b>Description: </b> {{product.productDescription}}</p>
+            <p><b>Price: </b> {{product.unitPrice|currency:'INR'}}</p>
+            <p><b>Category: </b> {{product.productCategory}}</p>
+        </div>
+        <br>
+        <div class="row">
+            <button (click)="home()" class="btn btn-primary">Back to Home Page</button><br>
+            <button class="btn btn-success">Add to cart</button>
+        </div>
     </div>
 </div>

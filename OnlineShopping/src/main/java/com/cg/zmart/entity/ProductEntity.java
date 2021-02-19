@@ -14,95 +14,96 @@ public class ProductEntity {
 
 	@Id
 	@GeneratedValue
-	private Long id;
+	private long prodId;
 
 	@NotNull
 	@Size(min = 1, max = 255, message = "Give your product a name.")
-	private String productName;
+	private String prodName;
 
 	@NotNull
 	@Min(1)
-	private double unitPrice;
+	private double prodPrice;
 
 	@NotNull
-	private long productQuantity;
+	private long prodQuantity;
 
 	@NotNull
-	private String productDescription;
+	private String prodDescription;
 
 	@NotNull
-	private String productCategory;
+	private String prodCategory;
 
 	@NotNull
-	private String imageUrl;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getProductName() {
-		return productName;
-	}
-
-	public void setProductName(String productName) {
-		this.productName = productName;
-	}
-
-	public double getUnitPrice() {
-		return unitPrice;
-	}
-
-	public void setUnitPrice(double unitPrice) {
-		this.unitPrice = unitPrice;
-	}
-
-	public long getProductQuantity() {
-		return productQuantity;
-	}
-
-	public void setProductQuantity(long productQuantity) {
-		this.productQuantity = productQuantity;
-	}
-
-	public String getProductDescription() {
-		return productDescription;
-	}
-
-	public void setProductDescription(String productDescription) {
-		this.productDescription = productDescription;
-	}
-
-	public String getProductCategory() {
-		return productCategory;
-	}
-
-	public void setProductCategory(String productCategory) {
-		this.productCategory = productCategory;
-	}
-
-	public String getImageUrl() {
-		return imageUrl;
-	}
-
-	public void setImageUrl(String imageUrl) {
-		this.imageUrl = imageUrl;
-	}
+	private String prodImageUrl;
 
 	public ProductEntity() {
 	}
 
-	public ProductEntity(long id, String productName, double unitPrice, long productQuantity, String productDescription,
-			String productCategory, String imageUrl) {
-		this.id = id;
-		this.productName = productName;
-		this.unitPrice = unitPrice;
-		this.productQuantity = productQuantity;
-		this.productDescription = productDescription;
-		this.productCategory = productCategory;
-		this.imageUrl = imageUrl;
+	public ProductEntity(long prodId, String prodName, double prodPrice, long prodQuantity, String prodDescription,
+			String prodCategory, String prodImageUrl) {
+		super();
+		this.prodId = prodId;
+		this.prodName = prodName;
+		this.prodPrice = prodPrice;
+		this.prodQuantity = prodQuantity;
+		this.prodDescription = prodDescription;
+		this.prodCategory = prodCategory;
+		this.prodImageUrl = prodImageUrl;
+	}
+
+	public long getProdId() {
+		return prodId;
+	}
+
+	public void setProdId(long prodId) {
+		this.prodId = prodId;
+	}
+
+	public String getProdName() {
+		return prodName;
+	}
+
+	public void setProdName(String prodName) {
+		this.prodName = prodName;
+	}
+
+	public double getProdPrice() {
+		return prodPrice;
+	}
+
+	public void setProdPrice(double prodPrice) {
+		this.prodPrice = prodPrice;
+	}
+
+	public long getProdQuantity() {
+		return prodQuantity;
+	}
+
+	public void setProdQuantity(long prodQuantity) {
+		this.prodQuantity = prodQuantity;
+	}
+
+	public String getProdDescription() {
+		return prodDescription;
+	}
+
+	public void setProdDescription(String prodDescription) {
+		this.prodDescription = prodDescription;
+	}
+
+	public String getProdCategory() {
+		return prodCategory;
+	}
+
+	public void setProdCategory(String prodCategory) {
+		this.prodCategory = prodCategory;
+	}
+
+	public String getProdImageUrl() {
+		return prodImageUrl;
+	}
+
+	public void setProdImageUrl(String prodImageUrl) {
+		this.prodImageUrl = prodImageUrl;
 	}
 }

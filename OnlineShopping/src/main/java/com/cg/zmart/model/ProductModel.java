@@ -1,20 +1,34 @@
 package com.cg.zmart.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class ProductModel {
 
-	private Long id;
+	@JsonProperty(value = "id")
+	private long id;
+
+	@JsonProperty(value = "productName")
 	private String productName;
+
+	@JsonProperty(value = "unitPrice")
 	private double unitPrice;
+
+	@JsonProperty(value = "productQuantity")
 	private long productQuantity;
+
+	@JsonProperty(value = "productDescription")
 	private String productDescription;
+
+	@JsonProperty(value = "productCategory")
 	private String productCategory;
+
+	@JsonProperty(value = "imageUrl")
 	private String imageUrl;
 
 	public ProductModel() {
-		super();
 	}
 
-	public ProductModel(Long id, String productName, double unitPrice, long productQuantity, String productDescription,
+	public ProductModel(long id, String productName, double unitPrice, long productQuantity, String productDescription,
 			String productCategory, String imageUrl) {
 		super();
 		this.id = id;
@@ -26,11 +40,11 @@ public class ProductModel {
 		this.imageUrl = imageUrl;
 	}
 
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -81,5 +95,4 @@ public class ProductModel {
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
 	}
-
 }

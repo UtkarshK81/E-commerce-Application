@@ -9,5 +9,5 @@ import com.cg.zmart.entity.ProductEntity;
 
 @Repository
 public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
-	public List<ProductEntity> findByProductCategory(String categoryName);
+	public List<ProductEntity> findByProdCategory(String categoryName);
 }

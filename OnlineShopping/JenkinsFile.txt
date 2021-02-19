@@ -1,0 +1,80 @@
+pipeline {
+
+agent any
+	stages {
+		stage('Clean Install') {
+			steps {
+				withMaven(maven : 'MAVEN_LOCAL' ,publisherStrategy: 'EXPLICIT', options: [junitPublisher()]) {
+					bat 'mvn clean install -Dmaven.test.skip=true'
+					}
+				}
+			}
+
+		stage('Compile') {
+			steps {
+				withMaven(maven : 'MAVEN_LOCAL',publisherStrategy: 'EXPLICIT', options: [junitPublisher()]) {
+					bat 'mvn compile '
+					}
+				}
+			}
+		stage('Testing') {
+			steps {
+				withMaven(maven : 'MAVEN_LOCAL',publisherStrategy: 'EXPLICIT', options: [junitPublisher()]) {
+					bat 'mvn test '
+					}
+				}
+				post {
+					always {
+						junit '/target/surefire-reports/*.xml'
+						}
+					}
+				}
+
+		stage('Build ') {
+			steps {
+				withMaven(maven : 'MAVEN_LOCAL',publisherStrategy: 'EXPLICIT', options: [junitPublisher()]) {
+					bat 'mvn package -Dmaven.test.skip=true '
+					}
+				}
+			}
+		stage('Code coverage'){
+			steps{
+				jacoco()
+				}
+			}
+		stage('Static code analysis'){
+			steps{
+				script{
+					withSonarQubeEnv('LOCAL_SONAR'){
+						withMaven(maven : 'MAVEN_LOCAL') {
+							bat 'mvn sonar:sonar -Dsonar.projectKey=zpmspipe -Dsonar.projectName=zpmspipe'
+							}
+						}
+					}
+				}
+			}
+		stage('Upload to NexusRepository') {
+			steps {
+				nexusArtifactUploader artifacts:
+				[[artifactId: 'OnlineShopping', classifier: '', 
+				file: 'target\\OnlineShopping-0.0.1-SNAPSHOT.war', type: 'war']], 
+				credentialsId: 'Nexus3', groupId: 'com.uk', 
+				nexusUrl: 'localhost:8081', 
+				nexusVersion: 'nexus3', protocol: 'http', 
+				repository: 'maven-snapshots', 
+				version: '0.0.1-SNAPSHOT'
+				}
+			}
+		stage('Deployment') {
+			steps {
+				deploy adapters: [
+				tomcat9(credentialsId: 'Tomcat9',path: '', url: 'http://localhost:8085/')
+								 ],
+				contextPath: 'zpms',
+				onFailure: false,
+				war: '**/*.war'
+				}
+			}
+
+}
+}

@@ -13,8 +13,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.cg.zmart.entity.ProductEntity;
+import com.cg.zmart.model.ProductModel;
 import com.cg.zmart.service.ProductService;
 
 @RestController
@@ -26,33 +25,33 @@ public class ProductController {
 	ProductService service;
 
 	@GetMapping("/showAll")
-	public List<ProductEntity> listAllproducts() {
+	public List<ProductModel> listAllproducts() {
 		return service.getAllProducts();
 	}
 	
 	@PostMapping("/add")	
-	public ProductEntity addProduct(@RequestBody ProductEntity prodEntity){
-		return service.createProduct(prodEntity);
+	public ProductModel addProduct(@RequestBody ProductModel prodModel){
+		return service.createProduct(prodModel);
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<ProductEntity> getProductById(@PathVariable Long id){
+	public ResponseEntity<ProductModel> getProductById(@PathVariable Long id){
 		return ResponseEntity.ok().body(service.fetchProductById(id));
 	}
 	
 	@DeleteMapping("delete/{id}")
-	public List<ProductEntity> delete(@PathVariable Long id) {
+	public List<ProductModel> delete(@PathVariable Long id) {
 		return service.destroyProduct(id);
 		
 	}
 	
 	@PutMapping("/update/{id}")
-	public ResponseEntity<ProductEntity> editProduct(@PathVariable Long id,@RequestBody ProductEntity prodEntity) {
-		return ResponseEntity.ok(service.updateProduct(id, prodEntity));
+	public ResponseEntity<ProductModel> editProduct(@PathVariable Long id,@RequestBody ProductModel prodModel) {
+		return ResponseEntity.ok(service.updateProduct(id, prodModel));
 	}
 
 	@GetMapping("/under/{category}")
-	public List<ProductEntity> fetchByCategory(@PathVariable String category) {
+	public List<ProductModel> fetchByCategory(@PathVariable String category) {
 		return service.filterByCategory(category);
 	}
 }

@@ -47,7 +47,7 @@ agent any
 				script{
 					withSonarQubeEnv('LOCAL_SONAR'){
 						withMaven(maven : 'MAVEN_LOCAL') {
-							bat 'mvn sonar:sonar -Dsonar.projectKey=zpmspipe -Dsonar.projectName=zpmspipe'
+							bat 'mvn sonar:sonar -Dsonar.projectKey=Backend_pipeline -Dsonar.projectName=Backend_pipeline'
 							}
 						}
 					}
@@ -61,7 +61,7 @@ agent any
 				credentialsId: 'Nexus3', groupId: 'com.uk', 
 				nexusUrl: 'localhost:8081', 
 				nexusVersion: 'nexus3', protocol: 'http', 
-				repository: 'maven-snapshots', 
+				repository: 'productManagement_BackEnd_Pipeline', 
 				version: '0.0.1-SNAPSHOT'
 				}
 			}
@@ -70,7 +70,7 @@ agent any
 				deploy adapters: [
 				tomcat9(credentialsId: 'Tomcat9',path: '', url: 'http://localhost:8085/')
 								 ],
-				contextPath: 'zpms',
+				contextPath: 'Backend_pipeline',
 				onFailure: false,
 				war: '**/*.war'
 				}

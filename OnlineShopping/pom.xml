@@ -13,7 +13,7 @@
 	<artifactId>OnlineShopping</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>OnlineShopping</name>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<description>E-commerce Website</description>
 
 	<properties>
@@ -98,6 +98,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
+		<finalName>Products</finalName>
 	</build>
 
 </project>

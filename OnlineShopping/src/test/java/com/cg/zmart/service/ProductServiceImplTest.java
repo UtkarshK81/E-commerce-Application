@@ -12,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import com.cg.zmart.entity.ProductEntity;
+import com.cg.zmart.model.ProductModel;
 import com.cg.zmart.repository.ProductRepository;
 
 @SpringBootTest
@@ -19,6 +20,9 @@ class ProductServiceImplTest {
 
 	@Autowired
 	private ProductService service;
+	
+	@Autowired
+	private ConverterService cService;
 
 	@MockBean
 	private ProductRepository prodRepo;
@@ -44,4 +48,11 @@ class ProductServiceImplTest {
 		assertEquals(1, service.filterByCategory(category).size());
 	}
 
+	@Test
+	void testCreateProduct() {
+		ProductModel product = new ProductModel(5, "NOISE", 1699, 50, "Smart Fitness Band", "Men's Fashion",
+				"https://assets.myntassets.com/f_webp,dpr_1.0,q_60,w_210,c_limit,fl_progressive/assets/images/10522922/2019/10/17/17e8bc37-920f-41ea-bd4a-921581099fe11571302942576-Noise-Unisex-Black-ColorFit-2-Smart-Fitness-Band-55215713029-1.jpg");
+		when(prodRepo.save(cService.convertToEntity(product))).thenReturn(cService.convertToEntity(product));
+		assertNotEquals(product, service.createProduct(product));
+	}
 }

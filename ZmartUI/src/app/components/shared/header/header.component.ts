@@ -9,7 +9,8 @@ export class HeaderComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
+  logo:string="./assets/image/Logo.jpg";
 }

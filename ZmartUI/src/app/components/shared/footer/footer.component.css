@@ -1,0 +1,8 @@
+ul{
+    display: inline-block;
+    list-style-type: none;
+}
+ul li{
+    display: inline-block;
+    scroll-padding-inline:inherit;
+}
